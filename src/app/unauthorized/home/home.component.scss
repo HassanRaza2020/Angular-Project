@@ -1,0 +1,77 @@
+.image-container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+  }
+  
+  img {
+    height: 200px;
+    width: 150px;
+    margin-top: -326px;
+  }
+  .quote {
+    display: flex; /* Centers text inside */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Ensures multi-line text is centered */
+    
+    width: 400px; /* Adjust width */
+    padding: 20px; /* Space inside */
+    margin: auto; /* Centers the block */
+    margin-top: -320px; /* Keep your existing positioning */
+
+    font-size: x-large;
+    font-family: cursive;
+    color: rgb(247, 16, 16);
+
+    border: 1px solid rgb(179, 179, 179); /* Red border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Adds shadow */
+}
+
+
+.counter h2 {
+  font-weight: bold;
+  transition: all 0.1s ease-in-out;
+
+  
+  margin-left: 80px;
+  font-size:100px;
+  color: red;
+  font-family: cursive;
+  margin-top: 50px;
+  margin-top: -315px;
+
+}
+
+.user-count{
+  font-size: 50px;
+  margin-left: 80px;
+  font-family: cursive;
+
+}
+
+.question-count {
+  font-size: 50px;
+  margin-left: 1100px;
+  font-family: cursive;
+
+}
+
+.question-counter h2{
+  font-weight: bold;
+  transition: all 0.1s ease-in-out;
+
+  
+  margin-left: 1100px;
+  font-size:100px;
+  color: red;
+  font-family: cursive;
+  margin-bottom: 10px;
+  margin-top: -205px;
+  
+
+}
+
+
+

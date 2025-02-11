@@ -1,0 +1,30 @@
+.custom-navbar{
+height: 75px;
+padding: 15px;
+background-color: rgb(255, 240, 240);
+
+}
+.navbar-brand{
+ font-family: cursive;
+ color: rgb(247, 36, 36);
+ font-size: 25px;
+
+}
+
+.nav-link{
+    color: red;
+}
+
+.btn-outline-success{
+    background-color:rgb(255, 8, 8);
+    color:rgb(255, 255, 255) ;
+    border-color: azure;
+    font-family: cursive;
+
+}
+
+.btn-outline-success:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 0, 0);
+    
+}

@@ -1,0 +1,26 @@
+<!-- <app-navbar></app-navbar> -->
+
+
+<div class="image-container" [@fadeIn]="imageAnimation">
+    <img src="https://cdn.pixabay.com/photo/2013/07/12/16/23/interrogation-point-150807_1280.png" alt="image">
+  </div>
+  
+  <div class="quote" [@fadeIn]="quoteAnimation">
+    <p>"One who never asks either <br> knows everything or nothing".</p>
+  </div>
+  
+  <div class="counter">
+  <h2>{{ count }}+</h2>
+</div>
+
+<div class="user-count" [@fadeIn]="usersHereAnimation" >users here</div>
+
+
+
+
+<div class="question-counter">
+  <h2>{{ count*3 }}+</h2>
+</div>
+
+<div class="question-count" [@fadeIn]="usersHereAnimation" >questions here</div>
+

@@ -1,0 +1,22 @@
+
+
+
+.sign-up-form{
+    display: flex;
+    margin-left: 50px;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+input{
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 200%;
+}
+
+label{
+    margin-bottom: 3px;
+    color: red;
+    font-family: cursive;
+}
