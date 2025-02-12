@@ -1,0 +1,24 @@
+.footer {
+    position: relative;
+    bottom: -130px;
+    width: 100%;
+    text-align: center;
+    font-family: cursive;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-link {
+    color: #000000;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .social-link:hover {
+    color: #ff0000; /* Change this to any hover color */
+  }
+  
