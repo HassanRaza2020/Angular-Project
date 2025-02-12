@@ -1,12 +1,11 @@
 
 
-
-.sign-up-form{
+.login-up-form{
     display: flex;
-    margin: 40px;
+    margin: 150px;
     flex-direction: column;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 100px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -29,23 +28,30 @@ label
     font-family: cursive;
 }
 
-.signup-button{
+.login-button{
   height: 40px;
   width: 8%;
   background-color: red;
   color: white;
   border-radius: 10px;
   font-family: cursive;  
+  margin-top: 10px;
   
 
 }
 
-
-.signup-button:hover{
-  background-color: rgb(255, 214, 214);
-  color: red;
+.login-button:hover{
+    background-color: rgb(255, 214, 214);
+    color: red;
 }
 
+
+a{
+    font-family: cursive;
+    text-decoration: none;
+    margin-bottom: 5px;
+    color: red;
+}
 
 
 .image-container {
@@ -57,12 +63,12 @@ label
   
   img {
     float: right;
-    height: 250px;
-    margin-top: -410px; /* Adjust instead of negative margin */
+    height: 150px;
+    margin-top: -370px; /* Adjust instead of negative margin */
   }
   
-  h2 {
-    margin-top: -130px; /* Small negative margin if needed */
+  h4 {
+    margin-top: -200px; /* Small negative margin if needed */
     float: right;
     font-family: cursive;
   }
