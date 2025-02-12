@@ -9,4 +9,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-angular-app';
+
 }

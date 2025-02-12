@@ -5,6 +5,8 @@ import { SharedModule } from './shared/shared.module'; // Import Shared Module
 import { SignupComponent } from './auth/signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     SharedModule,  // Import the SharedModule so NavbarComponent is available
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

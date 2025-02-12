@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { animate,style,state, transition, trigger } from '@angular/animations';
-
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,9 +21,31 @@ import { animate,style,state, transition, trigger } from '@angular/animations';
 export class SignupComponent{
   imageAnimation: string = 'hidden';
 
-  constructor() { 
+  constructor(private apiService:ApiService) { 
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
+    
   }
+
+  user = {username:'', email:'', password:'', address:''};
+
+  
+
+register() {
+  this.apiService.postTestData(this.user).subscribe(response => {
+    alert(response.message);
+  }, error => {
+    console.error('Registration error:', error);
+  });
 }
+
+
+
+
+
+
+
+}
+
+
