@@ -6,19 +6,21 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 import { HttpClientModule } from '@angular/common/http';
-
+import { VerificationComponent } from './auth/verification/verification.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent
+    AppComponent, SignupComponent,VerificationComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,  // Import the SharedModule so NavbarComponent is available
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

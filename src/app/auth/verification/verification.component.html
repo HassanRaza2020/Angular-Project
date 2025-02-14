@@ -1,2 +1,24 @@
-<h2>Verification</h2>
-<img src="https://cdn.pixabay.com/photo/2014/04/03/00/34/tick-308741_1280.png" alt="Verification">
+<div class="verification">
+
+
+
+    <img src="https://cdn.pixabay.com/photo/2014/04/03/00/34/tick-308741_1280.png" alt="Verification">
+    <h3>Verification</h3>
+
+
+    <form action="">
+        <input type="text" name="" id="">
+        <button type="submit" class="verification-form-buttom">Submit</button>
+    </form>
+
+    <div *ngIf="!otpExpired">
+        <p>Otp expires in {{minutes}}:{{seconds<10 ? '0'+seconds:seconds}}</p>
+    </div>
+
+     <div *ngIf="otpExpired">
+        <p style="color:red;"> OTP expired, please resend the OTP.</p>
+     </div>
+        
+
+</div>
+

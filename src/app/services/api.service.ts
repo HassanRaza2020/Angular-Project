@@ -10,8 +10,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // Fetch test data from Laravel API
   postTestData(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signup`, userData);
+    return this.http.post(`${this.apiUrl}/signup`, userData, {
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
+  
+
+  getTestData(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/test`);
+  }
+
+
 }

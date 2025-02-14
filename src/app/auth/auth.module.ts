@@ -9,7 +9,6 @@ import { VerificationComponent } from './verification/verification.component';
 @NgModule({
   declarations: [
     LoginComponent,
-    VerificationComponent
   ],
   imports: [
     CommonModule,
