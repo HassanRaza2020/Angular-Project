@@ -18,7 +18,7 @@ export class ApiService {
   
 
   getTestData(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/test`);
+      return this.http.get(`${this.apiUrl}/test`);
   }
 
 
