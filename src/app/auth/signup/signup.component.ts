@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { animate,style,state, transition, trigger } from '@angular/animations';
+import { animate,style,state, transition, trigger, query } from '@angular/animations';
 import { ApiService } from 'src/app/services/api.service';
+import { SharedService } from 'src/app/shared.service';
 import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +25,7 @@ import { Router } from '@angular/router';
 export class SignupComponent{
   imageAnimation: string = 'hidden';
 
-  constructor(private apiService:ApiService , private router: Router) { 
+  constructor(private apiService:ApiService , private router: Router, private sharedService:SharedService ) { 
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
@@ -30,6 +33,8 @@ export class SignupComponent{
   }
 
   user = {username:'', email:'', password:'', address:''};
+
+  
 
 
   register(){
@@ -41,7 +46,9 @@ export class SignupComponent{
           console.log('Success:', response);
           this.responseMessage = response.message;
           console.log('Form submitted', this.user);
-          this.router.navigate(['/verification']);
+         
+          this.router.navigate(['/verification',{requesData:JSON.stringify(this.user)} ])
+            console.log("json data:",JSON.stringify(this.user));
 
         },
         error: (error) => {
@@ -56,6 +63,11 @@ export class SignupComponent{
      
    }
 
+   sendMessage() {
+    const newMessage = "Hello from Sibling 1!";
+    console.log('Sending:', newMessage); // Debugging log
+    this.sharedService.updateMessage(newMessage);
+  }
 
   // onSubmit():void{
   //   console.log('Form submitted', this.user);
@@ -63,11 +75,6 @@ export class SignupComponent{
   // };
 
   responseMessage : string ='';
-
-
-
-   
-   
 
   
 

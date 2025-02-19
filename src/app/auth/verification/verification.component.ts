@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { SharedService } from 'src/app/shared.service';
+
 
 @Component({
   selector: 'app-verification',
@@ -7,15 +12,35 @@ import { Component } from '@angular/core';
 })
 
 
-export class VerificationComponent {
+export class VerificationComponent implements OnInit {
   minutes:number=0;
   seconds:number=10;
   timer:any;
   otpExpired:boolean = false;
-  constructor(){}
+  message: string = '';
+  receivedMessage:string = '';
+
+
+  constructor(private apiService:ApiService, private router:Router, private route:ActivatedRoute, private sharedService:SharedService){}
   ngOnInit():void{
-    this.startTimer();
-  }
+  this.startTimer();
+
+
+  this.sharedService.currentMessage.subscribe(message=>{
+    console.log("Received:", message);
+    this.receivedMessage = message;
+  })
+ 
+ 
+  
+  this.route.queryParams.subscribe(params => {
+    if (params['requestData']) {
+      const userData = JSON.parse(params['requestData']);
+      console.log('Received Data:', userData);
+    }
+  });}
+
+
 
   startTimer(){
     this.timer = setInterval(()=>{
@@ -28,7 +53,9 @@ export class VerificationComponent {
          this.minutes--;
          this.seconds = 59; 
         }
-        else{
+        
+        else
+        {
           clearInterval(this.timer);
           this.otpExpired=true;
           
@@ -38,6 +65,40 @@ export class VerificationComponent {
 
     },1000)
   }
+
+
+ otp = '';
+ responseMessage : string ='';
+
+
+
+
+
+  register(){
+    if(!this.otp ){
+      this.responseMessage = "OTP field is required.";}
+
+      this.apiService.postVerificationtData(this.otp).subscribe({
+        next: (response) => {
+          console.log('Success:', response);
+          this.responseMessage = response.message;
+          console.log('OTP sent', this.otp);
+          this.router.navigate(['/login']);
+
+        },
+        error: (error) => {
+          console.error('Error:', error);
+          this.responseMessage = 'otp failed. Please try again.';
+        },
+        complete: () => {
+          console.log('Request completed');
+        }
+      });
+      
+     
+   }
+
+
 
 
 }
