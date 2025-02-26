@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { animate,style,state, transition, trigger, animation } from '@angular/animations';
+import { SharedService } from 'src/app/shared.service';
  
 
 
@@ -16,13 +17,30 @@ import { animate,style,state, transition, trigger, animation } from '@angular/an
         
       ]
 })
+
+
 export class LoginComponent {
   imageAnimation: string = 'hidden';
+  message:string = '';
+  receivedMessage:string = '';
 
-  constructor() { 
+  constructor(private sharedService:SharedService) { 
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
+
+    this.sharedService.loginData.subscribe(message=>{
+      console.log("Received:", message);
+      this.receivedMessage = message;
+    })
+
+    
+  
   }
+
+  
+
+
+
 
 }
