@@ -2,16 +2,23 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  
+  providedIn: 'root' // Ensures only one instance exists
+
 })
+
 export class SharedService {
-  private messageSource = new BehaviorSubject<string>('Default Message'); // Initial value
-  currentMessage = this.messageSource.asObservable(); // Observable
+  
+  private dataSource = new BehaviorSubject<string>('default data'); 
+  currentData = this.dataSource.asObservable();
+  loginData = this.dataSource.asObservable();
 
-  constructor() {}
-
-  updateMessage(message: string) {
-    console.log('Message Updated:', message); // Debugging log
-    this.messageSource.next(message); // Update observable value
+  changeData(data: any) 
+  {
+    this.dataSource.next(data);
   }
+
+
+  
+ 
 }

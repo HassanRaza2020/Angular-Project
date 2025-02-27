@@ -7,6 +7,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LatestquestionComponent } from './unauthorized/latestquestion/latestquestion.component';
 import { VerificationComponent } from './auth/verification/verification.component';
+import { QuestionsComponent } from './auth/questions/questions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },  // Default route
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'latest-question', component:LatestquestionComponent},
   {path:'verification', component:VerificationComponent},
+  {path:'question', component:QuestionsComponent},
   { path: '**', redirectTo: '' }  
 ];
 

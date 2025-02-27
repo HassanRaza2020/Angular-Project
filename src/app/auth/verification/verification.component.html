@@ -1,3 +1,4 @@
+
 <div class="verification">
 
 
@@ -6,10 +7,10 @@
     <h3>Verification</h3>
 
 
-    <form>
-        <input type="text" name="otp">
+    <form (ngSubmit)="sendVerification()">
+        <input type="text" [(ngModel)]="otp" [ngModelOptions]="{standalone: true}">
         <button type="submit" class="verification-form-buttom">Submit</button>
-    </form>
+    </form> 
 
     <div *ngIf="!otpExpired">
         <p>Otp expires in {{minutes}}:{{seconds<10 ? '0'+seconds:seconds}}</p>

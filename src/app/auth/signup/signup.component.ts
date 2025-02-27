@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
   
       
 })
-export class SignupComponent{
+export class SignupComponent {
   imageAnimation: string = 'hidden';
 
   constructor(private apiService:ApiService , private router: Router, private sharedService:SharedService ) { 
@@ -32,10 +32,12 @@ export class SignupComponent{
     
   }
 
-  user = {username:'', email:'', password:'', address:''};
-
-  
-
+  user = 
+         {
+          username:'', 
+          email:'',
+          password:'', 
+          address:''};
 
   register(){
     if(!this.user.username || !this.user.email || !this.user.password || !this.user.address ){
@@ -43,12 +45,12 @@ export class SignupComponent{
 
       this.apiService.postTestData(this.user).subscribe({
         next: (response) => {
-          console.log('Success:', response);
+          // console.log('Success:', response);
           this.responseMessage = response.message;
           console.log('Form submitted', this.user);
+          this.sendMessage();
          
-          this.router.navigate(['/verification',{requesData:JSON.stringify(this.user)} ])
-            console.log("json data:",JSON.stringify(this.user));
+         
 
         },
         error: (error) => {
@@ -58,22 +60,20 @@ export class SignupComponent{
         complete: () => {
           console.log('Request completed');
         }
-      });
+      }
+  
+    );
       
      
    }
 
    sendMessage() {
-    const newMessage = "Hello from Sibling 1!";
-    console.log('Sending:', newMessage); // Debugging log
-    this.sharedService.updateMessage(newMessage);
+    console.log('Sending:', this.user); // Debugging log
+    this.sharedService.changeData(this.user);
+    this.router.navigate(['/verification'])
   }
 
-  // onSubmit():void{
-  //   console.log('Form submitted', this.user);
-  //   this.router.navigate(['/verification']);
-  // };
-
+  
   responseMessage : string ='';
 
   

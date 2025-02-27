@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from "../shared/shared.module";
 import { LoginComponent } from './login/login.component';
-import { VerificationComponent } from './verification/verification.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { QuestionsComponent } from './questions/questions.component';
 
 
 @NgModule({
@@ -12,7 +12,11 @@ import { VerificationComponent } from './verification/verification.component';
   ],
   imports: [
     CommonModule,
-    SharedModule
-]
+    SharedModule,
+    ReactiveFormsModule,
+],
+
+
+
 })
 export class AuthModule { }

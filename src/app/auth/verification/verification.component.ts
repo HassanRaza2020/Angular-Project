@@ -26,19 +26,22 @@ export class VerificationComponent implements OnInit {
   this.startTimer();
 
 
-  this.sharedService.currentMessage.subscribe(message=>{
+  this.sharedService.currentData.subscribe(message=>{
     console.log("Received:", message);
     this.receivedMessage = message;
   })
  
  
   
-  this.route.queryParams.subscribe(params => {
-    if (params['requestData']) {
-      const userData = JSON.parse(params['requestData']);
-      console.log('Received Data:', userData);
-    }
-  });}
+  // this.route.queryParams.subscribe(params => {
+  //   if (params['requestData']) {
+  //     const userData = JSON.parse(params['requestData']);
+  //     console.log('Received Data:', userData);
+  //   }});
+
+
+
+}
 
 
 
@@ -58,8 +61,6 @@ export class VerificationComponent implements OnInit {
         {
           clearInterval(this.timer);
           this.otpExpired=true;
-          
-        
         }
       }
 
@@ -67,22 +68,25 @@ export class VerificationComponent implements OnInit {
   }
 
 
- otp = '';
- responseMessage : string ='';
+responseMessage : string ='';
+otp:string = '';
 
 
+  sendVerification()
+  
+  {
 
-
-
-  register(){
+  
     if(!this.otp ){
       this.responseMessage = "OTP field is required.";}
 
-      this.apiService.postVerificationtData(this.otp).subscribe({
-        next: (response) => {
+      this.apiService.postVerificationData(this.otp, this.receivedMessage).subscribe({
+          next: (response) => {
           console.log('Success:', response);
-          this.responseMessage = response.message;
-          console.log('OTP sent', this.otp);
+          this.responseMessage = "otp matched successfully";
+          console.log('OTP sent', this.otp,this.responseMessage);
+
+          this.sharedService.changeData(response);
           this.router.navigate(['/login']);
 
         },
@@ -94,9 +98,13 @@ export class VerificationComponent implements OnInit {
           console.log('Request completed');
         }
       });
+    
       
      
    }
+
+
+
 
 
 

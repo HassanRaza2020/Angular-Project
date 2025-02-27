@@ -1,0 +1,11 @@
+<h2>Questions</h2>
+
+<div class="question-section">
+    <div *ngFor="let messages of  message" class="question-content">
+        
+        
+        <p>{{messages.username}}</p>
+        <a class="question-list">{{messages.description}}</a>
+        <p>{{this.datepipe.transform(messages.updated_at, 'yyyy/MM hh:mm a')}}</p>
+    </div>
+</div>

@@ -8,21 +8,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { VerificationComponent } from './auth/verification/verification.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule, DatePipe } from '@angular/common';
+import { AuthModule } from './auth/auth.module';
+import { LoginComponent } from './auth/login/login.component';
+import { QuestionsComponent } from './auth/questions/questions.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent
-  ],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent],
   imports: [
     BrowserModule,
     SharedModule,  // Import the SharedModule so NavbarComponent is available
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
+  
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
