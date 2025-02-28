@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class PostQuestionComponent {
 
    categoryList:string[];
+   addQuestion:string[];
 
   constructor(private apiService:ApiService ){
    
@@ -16,7 +17,22 @@ export class PostQuestionComponent {
 
     })
 
+
+    
   }
 
+
+  sentQuestionRequest(){
+    this.apiService.postQuestion(this.addQuestion).subscribe({
+      next:(response)=>{
+
+        this.addQuestion = response;
+        console.log("data sent:", this.addQuestion);
+
+      }
+    })
+      
+
+  }
 
 }

@@ -46,12 +46,22 @@ export class ApiService {
     })
   }
 
+
+  postQuestion(data:any):Observable<any>{
+    const payload = {data:data,};
+
+    return this.http.post(`${this.apiUrl}/post-question`, payload, {
+      headers:{'Content-Type':`application/json`}
+    })
+  }
+
+
   getQuestion(): Observable<any> {
     return this.http.get(`${this.apiUrl}/question`);
   }
 
   getCategory():Observable<any>{
-    return this.http.get(`${this.apiUrl}/post-question`);
+    return this.http.get(`${this.apiUrl}/category`);
   }
 
 
