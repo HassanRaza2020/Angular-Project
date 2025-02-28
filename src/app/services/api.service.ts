@@ -50,6 +50,10 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/question`);
   }
 
+  getCategory():Observable<any>{
+    return this.http.get(`${this.apiUrl}/post-question`);
+  }
+
 
   private handleError(error:HttpErrorResponse){
     if(error.status==422){
