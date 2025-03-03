@@ -10,6 +10,7 @@ export class PostQuestionComponent {
 
    categoryList:any[];
    addQuestion={description:'',title:'',category:'', user_id:'',username: ''};
+   responseMessage:string = '';
    
 
 
@@ -22,18 +23,22 @@ export class PostQuestionComponent {
 
 
   sentQuestionRequest():void{
-   
-    console.log("Form Data:", this.addQuestion);
-    this.http.post('http://localhost:8000/api/post-question', this.addQuestion).subscribe(
-      (response)=>{
-        console.log("Question submitted successfully:", response);
 
-      },
-      (error)=>{
-        console.error(":Error submitting question: ", error);
-      }
+    this.apiService.postQuestion(this.addQuestion).subscribe({
+      next:(response)=>{
+      this.addQuestion = response;
+    },
 
-    );
+    error: (error) => {
+      console.error('Error:', error);
+      this.responseMessage = 'Registration failed. Please try again.';
+    },
+
+  
+  }
+  );    
+
+
 
 
   }
