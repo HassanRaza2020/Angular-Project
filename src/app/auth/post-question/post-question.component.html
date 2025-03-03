@@ -1,30 +1,31 @@
-
-
 <div class="post-question-section">
 
 
-    <form (submit)="sentQuestionRequest()">
+    <form (ngSubmit)="sentQuestionRequest()">
         <h3>Questions</h3>    
 
         <div class="col-5 offset-sm margin-bottom-15">
             <label for="title" >Title</label>
-            <input type="text" class="form-control" name="title" placeholder="Add Title..."  required>
+            <input type="text" class="form-control"  placeholder="Add Title..." [(ngModel)]="addQuestion.title" name="title"  required>
         </div>
     
        <div class="col-5 offset-sm margin-bottom-15" >
             <label for="text">Description</label>
-            <textarea rows="5" cols="60"  placeholder="Add Description.." name="description"></textarea>
+            <textarea rows="5" cols="60"  placeholder="Add Description.." [(ngModel)]="addQuestion.description" name="description" ></textarea>
         </div> 
-    
-        <label for="text">Category</label>
-        <select class="form-control" name="category" id="category" required>
-            <option disabled selected>Select a category</option>
-            <option  value="categoryList['content_id']" *ngFor="let categoryList of categoryList"> {{categoryList['content_name']}}</option>
-        </select>
+        <label for="category">Category</label>
 
+        <select class="form-control" [(ngModel)]="addQuestion.category" name="category" id="category" required>
+            <option disabled selected>Select a category</option>
+            <option *ngFor="let category of categoryList" [value]="category.content_id">
+                {{ category.content_name }}
+            </option>
+        </select>
+        
         <button type="submit">Post</button>
     
     </form>
 
 
 </div>
+
