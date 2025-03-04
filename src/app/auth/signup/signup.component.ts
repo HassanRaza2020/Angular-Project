@@ -57,12 +57,10 @@ export class SignupComponent {
           console.error('Error:', error);
           this.responseMessage = 'Registration failed. Please try again.';
         },
-        complete: () => {
+        complete:() => {
           console.log('Request completed');
         }
-      }
-  
-    );
+      } );
       
      
    }

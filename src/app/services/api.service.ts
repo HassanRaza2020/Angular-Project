@@ -16,9 +16,7 @@ export class ApiService {
     
  
     return this.http.post(`${this.apiUrl}/signup`, userData, {
-     
-      headers: { 'Content-Type': 'application/json' }
-      
+      headers: { 'Content-Type': 'application/json' }      
     }).pipe(catchError(this.handleError));
   }
   
@@ -57,10 +55,10 @@ export class ApiService {
   }
 
 
-  postlogin(data:any):Observable<any>{
-    const payload = {data:data}; 
-
-    return this.http.post(`${this.apiUrl}/post-question`, payload, {
+  postLogin(data:any):Observable<any>{
+   
+    console.log("login data:", data);
+    return this.http.post(`${this.apiUrl}/login`, data, {
       headers:{'Content-Type':`application/json`}
     });
 

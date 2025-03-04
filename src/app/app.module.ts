@@ -18,7 +18,7 @@ import { PostQuestionComponent } from './auth/post-question/post-question.compon
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent],
   imports: [
     BrowserModule,
     SharedModule,  // Import the SharedModule so NavbarComponent is available

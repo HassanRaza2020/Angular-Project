@@ -9,7 +9,6 @@ import { PostQuestionComponent } from './post-question/post-question.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { animate,style,state, transition, trigger, animation } from '@angular/animations';
 import { SharedService } from 'src/app/shared.service';
-import { ApiService } from 'src/app/services/api.service'; 
+import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router'; 
 
 
 @Component({
@@ -23,9 +24,9 @@ export class LoginComponent {
   imageAnimation: string = 'hidden';
   message:string = '';
   receivedMessage:string = '';
-  userLogin = {email:"", username:""};
+  userLogin = {email:"", password:""};
 
-  constructor(private sharedService:SharedService , apiService:ApiService) { 
+  constructor(private sharedService:SharedService , private apiService:ApiService, private router:Router) { 
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
@@ -36,12 +37,27 @@ export class LoginComponent {
       this.receivedMessage = message;
     })
   }
-
-  login(){
-    
-  }
-
   
+
+  postLogin():void{
+   this.apiService.postLogin(this.userLogin).subscribe({
+    next:(response)=>{
+      this.userLogin = response;
+      console.log("Login Done!!!");
+      this.router.navigate(['/question']);
+    },
+
+    error:(error)=>{
+      console.error(error); 
+    }
+
+
+
+
+   })
+
+  }
+   
   
 
 

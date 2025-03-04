@@ -4,16 +4,16 @@
 
 
 <div class="login-up-form">
-    <form action="" method="POST">
+    <form (ngSubmit)="postLogin()">
     
         <div class="col-5 offset-sm margin-bottom-15">
             <label for="email">User Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter user email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter user email" [(ngModel)]="userLogin.email"  required>
         </div>
     
         <div class="col-5 offset-sm margin-bottom-15">
             <label for="password">User Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Enter user password" required>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter user password"  [(ngModel)]="userLogin.password"  required>
         </div>
 
         
