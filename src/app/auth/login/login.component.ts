@@ -26,7 +26,7 @@ export class LoginComponent {
   receivedMessage:string = '';
   userLogin = {email:"", password:""};
 
-  constructor(private sharedService:SharedService , private apiService:ApiService, private router:Router) { 
+  constructor(private sharedService:SharedService , private apiService:ApiService, private router:Router) {  
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
@@ -40,27 +40,36 @@ export class LoginComponent {
   
 
   postLogin():void{
-   this.apiService.postLogin(this.userLogin).subscribe({
+    this.apiService.postLogin(this.userLogin).subscribe({
     next:(response)=>{
-      this.userLogin = response;
-      console.log("Login Done!!!");
-      this.router.navigate(['/question']);
-    },
+    this.userLogin = response;
+    console.log("Login Done!!!");
+    this.router.navigate(['/question']);
+
+    console.log('auth_token', response.token);
+    console.log('user_id', response.user_id);
+    console.log('username', response.username);
+    console.log('email', response.email);
+
+
+
+
+
+    localStorage.setItem('auth_token', response.token);
+    localStorage.setItem('user_id', response.user_id);
+    localStorage.setItem('username', response.username);
+    localStorage.setItem('email', response.email);
+
+
+
+   
+  },
+  
 
     error:(error)=>{
       console.error(error); 
-    }
-
-
-
-
-   })
-
-  }
+    }}
+  )}
    
-  
-
-
-
 
 }

@@ -9,9 +9,10 @@ import { LatestquestionComponent } from './unauthorized/latestquestion/latestque
 import { VerificationComponent } from './auth/verification/verification.component';
 import { QuestionsComponent } from './auth/questions/questions.component';
 import { PostQuestionComponent } from './auth/post-question/post-question.component';
+import { authGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },  // Default route
+  { path: '', component: HomeComponent, canActivate:[authGuard] }, 
   { path: 'signup', component: SignupComponent }, 
   {path: 'login', component:LoginComponent},
   {path: 'latest-question', component:LatestquestionComponent},

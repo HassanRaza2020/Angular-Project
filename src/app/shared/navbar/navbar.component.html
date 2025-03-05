@@ -3,29 +3,45 @@
       <a class="navbar-brand" href="#">Questions</a>
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#" style="font-family:cursive;">Home</a>
+        
+        
+          <li class="nav-item" *ngIf="!authService.isLoggedIn()">
+            <a class="nav-link" aria-current="page" href="/" style="font-family:cursive;" *ngIf="!authService.isLoggedIn()">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/latest-question" style="font-family: cursive;">Latest Question</a>
+            <a class="nav-link" href="/latest-question" style="font-family: cursive;" *ngIf="!authService.isLoggedIn()"  >Latest Question</a>
           </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/login" style="font-family: cursive;">Login</a>
+            <a class="nav-link" href="/login" style="font-family: cursive;" *ngIf="!authService.isLoggedIn()">Login</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/signup" style="font-family: cursive;">Sign Up</a>
+            <a class="nav-link" href="/signup" style="font-family: cursive;" *ngIf="!authService.isLoggedIn()">Sign Up</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/post-question" style="font-family: cursive;">Post</a>
+            <a class="nav-link" href="/post-question" style="font-family: cursive;" *ngIf="authService.isLoggedIn()">Post</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/question" style="font-family: cursive;">Questions</a>
+            <a class="nav-link" href="/question" style="font-family: cursive;" *ngIf="authService.isLoggedIn()">Questions</a>
           </li>
-
+          
+          
+          <li class="nav-item"> 
+            <a  class="nav-link" style="font-family: cursive;">{{this.username}}</a>
+          </li>
+          
+          
+          
+          
+          
+          <li class="nav-item" *ngIf="authService.isLoggedIn()"> 
+            <a (click)="authService.logout()" class="nav-link" style="font-family: cursive;">Logout</a>
+          </li>
+          
+          
 
 
 

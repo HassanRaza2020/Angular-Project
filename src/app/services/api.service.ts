@@ -54,17 +54,6 @@ export class ApiService {
     })
   }
 
-
-  postLogin(data:any):Observable<any>{
-   
-    console.log("login data:", data);
-    return this.http.post(`${this.apiUrl}/login`, data, {
-      headers:{'Content-Type':`application/json`}
-    });
-
-  }
-
-
   getQuestion(): Observable<any> {
     return this.http.get(`${this.apiUrl}/question`);
   }
@@ -83,10 +72,13 @@ export class ApiService {
     }
   };
   
-  
 
-
-
+  postLogin(data:any):Observable<any>{
+   
+    console.log("login data:", data);
+    return this.http.post(`${this.apiUrl}/login`, data, {withCredentials:true});
+  }
+ 
   
 
 }

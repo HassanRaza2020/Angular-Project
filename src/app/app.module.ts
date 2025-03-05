@@ -9,11 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { VerificationComponent } from './auth/verification/verification.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, DatePipe } from '@angular/common';
-import { AuthModule } from './auth/auth.module';
 import { LoginComponent } from './auth/login/login.component';
 import { QuestionsComponent } from './auth/questions/questions.component';
 import { PostQuestionComponent } from './auth/post-question/post-question.component';
-
 
 
 @NgModule({
