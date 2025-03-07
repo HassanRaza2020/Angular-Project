@@ -11,12 +11,16 @@ export class PostQuestionComponent {
    categoryList:any[];
    addQuestion={description:'',title:'',category:'', user_id:'',username: ''};
    responseMessage:string = '';
-   
+   userId:string = '';
+   userName:string = '';
 
 
   constructor(private apiService:ApiService, private http:HttpClient ){
     this.apiService.getCategory().subscribe(response=>{
         this.categoryList =   response;
+        this.addQuestion.user_id = localStorage.getItem('user_id');
+        this.addQuestion.username = localStorage.getItem('username');
+
 
     })
   }
@@ -24,21 +28,27 @@ export class PostQuestionComponent {
 
   sentQuestionRequest():void{
 
+    if(this.addQuestion.category && this.addQuestion.description && this.addQuestion.title && this.addQuestion.user_id && this.addQuestion.username ){
+
     this.apiService.postQuestion(this.addQuestion).subscribe({
       next:(response)=>{
       this.addQuestion = response;
     },
-
     error: (error) => {
       console.error('Error:', error);
       this.responseMessage = 'Registration failed. Please try again.';
     },
-
+    
   
   }
+
+
   );    
 
-
+    }
+    else {
+      console.log("fields are not set!!!")
+    }
 
 
   }

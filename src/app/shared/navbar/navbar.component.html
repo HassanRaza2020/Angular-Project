@@ -38,16 +38,15 @@
           
           
           <li class="nav-item" *ngIf="authService.isLoggedIn()"> 
-            <a (click)="authService.logout()" class="nav-link" style="font-family: cursive;">Logout</a>
+            <a class="nav-link" (click)="authService.logout()" class="nav-link" style="font-family: cursive;" >Logout</a>
           </li>
           
-          
-
+      
 
 
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form (ngSubmit)="searchQuestion()" class="d-flex" *ngIf="authService.isLoggedIn()">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchQuery" name="query" >
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

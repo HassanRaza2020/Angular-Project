@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-questions',
@@ -9,16 +11,21 @@ import { DatePipe } from '@angular/common';
 })
 export class QuestionsComponent {
 
- //message = {username:'', title:'',update_at:''};
 
 message =[];
-  constructor(private apiService:ApiService, public datepipe:DatePipe){}
+  constructor(private apiService:ApiService, public datepipe:DatePipe, public sharedShare:SharedService){}
 
   ngOnInit(): void {
+
+
     this.apiService.getQuestion().subscribe(response=>{
       this.message = response;
       console.log("data",this.message);
     })
+
+  
+
+    
 
     };
 

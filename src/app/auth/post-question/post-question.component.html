@@ -13,6 +13,7 @@
             <label for="text">Description</label>
             <textarea rows="5" cols="60"  placeholder="Add Description.." [(ngModel)]="addQuestion.description" name="description" ></textarea>
         </div> 
+
         <label for="category">Category</label>
 
         <select class="form-control" [(ngModel)]="addQuestion.category" name="category" id="category" required>
@@ -21,7 +22,9 @@
                 {{ category.content_name }}
             </option>
         </select>
-        
+       
+        <input name="username" [(ngModel)]="this.addQuestion.username"  hidden>
+        <input name="user_id" [(ngModel)]="this.addQuestion.user_id"  hidden>        
         <button type="submit">Post</button>
     
     </form>

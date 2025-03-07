@@ -18,6 +18,10 @@ export class SharedService {
     this.dataSource.next(data);
   }
 
+  sentSerachData(data:any){
+     this.dataSource.next(data);
+  }
+
 
   
  

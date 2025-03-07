@@ -45,24 +45,18 @@ export class LoginComponent {
     this.userLogin = response;
     console.log("Login Done!!!");
     this.router.navigate(['/question']);
-
-    console.log('auth_token', response.token);
-    console.log('user_id', response.user_id);
-    console.log('username', response.username);
-    console.log('email', response.email);
-
-
-
-
-
-    localStorage.setItem('auth_token', response.token);
-    localStorage.setItem('user_id', response.user_id);
-    localStorage.setItem('username', response.username);
-    localStorage.setItem('email', response.email);
-
-
-
    
+
+    // console.log('auth_token', response.token);
+    // console.log('user_id', response.user_id);
+    // console.log('username', response.username);
+    // console.log('email', response.email);
+
+    // localStorage.setItem('auth_token', response.token);
+    // localStorage.setItem('user_id', response.user_id);
+    // localStorage.setItem('username', response.username);
+    // localStorage.setItem('email', response.email);
+  
   },
   
 

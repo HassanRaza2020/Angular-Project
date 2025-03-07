@@ -12,11 +12,12 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { LoginComponent } from './auth/login/login.component';
 import { QuestionsComponent } from './auth/questions/questions.component';
 import { PostQuestionComponent } from './auth/post-question/post-question.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent],
   imports: [
     BrowserModule,
     SharedModule,  // Import the SharedModule so NavbarComponent is available
