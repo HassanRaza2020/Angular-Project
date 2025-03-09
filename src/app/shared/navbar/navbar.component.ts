@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.loadUserData(); // Load user data when the component initializes
 
+
     // Listen for route changes to update user data dynamically
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -46,8 +47,14 @@ export class NavbarComponent implements OnInit {
   searchQuestion() {
     this.apiService.getSearch(this.searchQuery).subscribe(response => {
       console.log("Search data:", response);
-      this.sharedService.sentSerachData(response);
+      this.sharedService.sentSearchData(response);
     },
+
+    
+
+
+    
+
     error =>{
       console.error("Search Error:", error);
     }

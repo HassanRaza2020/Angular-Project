@@ -13,19 +13,22 @@ export class QuestionsComponent {
 
 
 message =[];
-  constructor(private apiService:ApiService, public datepipe:DatePipe, public sharedShare:SharedService){}
+searchData:any;
 
-  ngOnInit(): void {
+  constructor(private apiService:ApiService, public datepipe:DatePipe, public sharedService:SharedService){}
 
-
+  ngOnInit(): void {   
     this.apiService.getQuestion().subscribe(response=>{
       this.message = response;
       console.log("data",this.message);
+
+     this.sharedService.searchData$.subscribe(data=>{
+      console.log("Received Search Data:", data);
+      this.searchData = data;
+     })
+
     })
 
-  
-
-    
 
     };
 
