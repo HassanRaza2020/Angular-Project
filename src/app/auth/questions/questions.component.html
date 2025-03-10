@@ -1,11 +1,27 @@
 <h2>Questions</h2>
 
-<div class="question-section">
-    <div *ngFor="let messages of  message" class="question-content">
-        
-        
-        <p>{{messages.username}}</p>
-        <a class="question-list">{{messages.title}}</a>
-        <p>{{this.datepipe.transform(messages.updated_at, 'yyyy/MM/dd hh:mm a')}}</p>
+<div class="question-section">    
+  
+    <div *ngIf="searchData && searchData.length > 0; else showMessage">        
+        <div *ngFor="let searchItem of searchData" class="question-content">
+            <p>{{ searchItem.username }}</p>
+            <a class="question-list">{{ searchItem.title }}</a>
+            <p>{{ datepipe.transform(searchItem.updated_at, 'yyyy/MM/dd hh:mm a') }} </p>
+            <button (click)="deleteQuestion(searchItem.question_id)" class="btn btn-danger">Delete</button>
+
+        </div>  
     </div>
+
+    <ng-template #showMessage>
+        <div *ngIf="message && message.length > 0">
+            <div *ngFor="let msg of message" class="question-content">
+                <p>{{ msg.username }}</p>
+                <a class="question-list">{{ msg.title }}</a>
+                <p>{{ datepipe.transform(msg.updated_at, 'yyyy/MM/dd hh:mm a') }}</p>
+                <button (click)="deleteQuestion(msg.question_id)" class="btn btn-danger">Delete</button>
+
+            </div> 
+        </div>
+    </ng-template>
+
 </div>

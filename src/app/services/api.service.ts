@@ -102,7 +102,10 @@ export class ApiService {
       params:{query}
     });
   }
-
+   
+  deleteQuestion(questionKey: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete-question/${questionKey}`);
+  }
 
  
   
