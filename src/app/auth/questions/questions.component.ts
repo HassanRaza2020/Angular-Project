@@ -14,6 +14,7 @@ export class QuestionsComponent {
 
 message =[];
 searchData = [];
+questions =[];
 
   constructor(private apiService:ApiService, public datepipe:DatePipe, public sharedService:SharedService){}
 
@@ -42,7 +43,17 @@ searchData = [];
 
     deleteQuestion(questionKey:number){
       this.apiService.deleteQuestion(questionKey).subscribe(data=>{
-        console.log("Deleted Key:", data);
+      console.log("Deleted Key:", data);
+    
+      if (this.searchData) {
+        this.searchData = this.searchData.filter(q => q.question_id !== questionKey);
+      }
+
+      // ✅ Remove from message if it exists
+      if (this.message) {
+        this.message = this.message.filter(q => q.question_id !== questionKey);
+      }
+          
        
 
 
