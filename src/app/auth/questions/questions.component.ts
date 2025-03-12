@@ -12,54 +12,54 @@ import { SharedService } from 'src/app/shared.service';
 export class QuestionsComponent {
 
 
-message =[];
-searchData = [];
-questions =[];
+  message = [];
+  searchData = [];
+  questions = [];
 
-  constructor(private apiService:ApiService, public datepipe:DatePipe, public sharedService:SharedService){}
+  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService) { }
 
-  ngOnInit(): void {   
-    this.apiService.getQuestion().subscribe(response=>{
+  ngOnInit(): void {
+    this.apiService.getQuestion().subscribe(response => {
       this.message = response;
-      console.log("data",this.message);
+      console.log("data", this.message);
 
-     this.sharedService.searchData$.subscribe(data=>{
-     
-      if(data){
-        console.log("Received Search Data:", data);
-        this.message = [];
-      }
-      if(data){
-        this.searchData = data;
-      }
-      console.log("Display searchData:", this.searchData);
-      console.log("Display message:", this.message);
-        
-       })    
+      this.sharedService.searchData$.subscribe(data => {
+
+        if (data) {
+          console.log("Received Search Data:", data);
+          this.message = [];
+        }
+        if (data) {
+          this.searchData = data;
+        }
+        console.log("Display searchData:", this.searchData);
+        console.log("Display message:", this.message);
+
+      })
     })
 
 
-    };
+  };
 
-    deleteQuestion(questionKey:number){
-      this.apiService.deleteQuestion(questionKey).subscribe(data=>{
+  deleteQuestion(questionKey: number) {
+    this.apiService.deleteQuestion(questionKey).subscribe(data => {
       console.log("Deleted Key:", data);
-    
+
       if (this.searchData) {
         this.searchData = this.searchData.filter(q => q.question_id !== questionKey);
       }
 
-      // ✅ Remove from message if it exists
+
       if (this.message) {
         this.message = this.message.filter(q => q.question_id !== questionKey);
       }
-          
-       
 
 
-     });
 
-    }
+
+    });
+
+  }
 
 
 

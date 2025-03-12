@@ -9,17 +9,18 @@ import { LatestquestionComponent } from './unauthorized/latestquestion/latestque
 import { VerificationComponent } from './auth/verification/verification.component';
 import { QuestionsComponent } from './auth/questions/questions.component';
 import { PostQuestionComponent } from './auth/post-question/post-question.component';
-import { authGuard } from './services/auth.guard';
+import { AuthGuard } from './services/auth.guard';
+
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate:[authGuard] }, 
+  { path: '', component: HomeComponent  }, 
   { path: 'signup', component: SignupComponent }, 
   {path: 'login', component:LoginComponent},
   {path: 'latest-question', component:LatestquestionComponent},
-  {path:'verification', component:VerificationComponent},
-  {path:'question', component:QuestionsComponent},
-  {path:'post-question', component:PostQuestionComponent},
-  { path: '**', redirectTo: '' }  
+  {path:'verification', component:VerificationComponent, },
+  {path:'question', component:QuestionsComponent, canActivate:[AuthGuard]},
+  {path:'post-question', component:PostQuestionComponent,canActivate:[AuthGuard]},
+  { path: '**', redirectTo: '', pathMatch:'full' }  
 ];
 
 @NgModule({

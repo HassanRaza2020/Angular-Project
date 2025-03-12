@@ -44,6 +44,8 @@ export class LoginComponent {
     next:(response)=>{
     this.userLogin = response;
     console.log("Login Done!!!");
+    const token = localStorage.getItem('auth_token')
+    console.log("token", token)
     this.router.navigate(['/question']);
    
 

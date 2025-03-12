@@ -84,7 +84,7 @@ export class ApiService {
 
     if(response.token){
 
-      console.log("login data:", response);
+    console.log("login data:", response);
         
     localStorage.setItem('auth_token', response.token);
     localStorage.setItem('user_id', response.user_id);

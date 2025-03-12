@@ -1,6 +1,8 @@
 import { Component ,OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { HttpClient } from '@angular/common/http';
+import { Route, Router } from '@angular/router';
+
 @Component({
   selector: 'app-post-question',
   templateUrl: './post-question.component.html',
@@ -15,7 +17,7 @@ export class PostQuestionComponent {
    userName:string = '';
 
 
-  constructor(private apiService:ApiService, private http:HttpClient ){
+  constructor(private apiService:ApiService, private http:HttpClient, private router:Router ){
     this.apiService.getCategory().subscribe(response=>{
         this.categoryList =   response;
         this.addQuestion.user_id = localStorage.getItem('user_id');
@@ -33,17 +35,13 @@ export class PostQuestionComponent {
     this.apiService.postQuestion(this.addQuestion).subscribe({
       next:(response)=>{
       this.addQuestion = response;
+      this.router.navigate(['/question']);
     },
     error: (error) => {
       console.error('Error:', error);
       this.responseMessage = 'Registration failed. Please try again.';
     },
-    
-  
-  }
-
-
-  );    
+  });    
 
     }
     else {
