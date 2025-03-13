@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef,ViewChild,EventEmitter,Output } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EditComponent } from '../edit/edit.component';
+
+
 
 @Component({
   selector: 'app-questions',
@@ -12,11 +16,12 @@ import { SharedService } from 'src/app/shared.service';
 export class QuestionsComponent {
 
 
+
   message = [];
   searchData = [];
   questions = [];
 
-  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService) { }
+  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.apiService.getQuestion().subscribe(response => {
@@ -54,12 +59,18 @@ export class QuestionsComponent {
         this.message = this.message.filter(q => q.question_id !== questionKey);
       }
 
-
-
-
     });
 
   }
+
+  openModal() {
+   this.dialog.open(EditComponent, {
+    width:'400px',
+    data:{message:'Hello form parent component!'}
+   });
+  }
+
+
 
 
 
