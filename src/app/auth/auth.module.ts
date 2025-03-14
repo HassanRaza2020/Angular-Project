@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from "../shared/shared.module";
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from '../unauthorized/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionsComponent } from './questions/questions.component';
 import { PostQuestionComponent } from './post-question/post-question.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
   declarations: [
+  
   ],
   imports: [
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-],
+  ],
+
+
 
 
 

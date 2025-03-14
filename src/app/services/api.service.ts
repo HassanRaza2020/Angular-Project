@@ -108,6 +108,9 @@ export class ApiService {
   }
 
  
+  editQuestion(data:any):Observable<any>{
+    return this.http.put(`${this.apiUrl}/edit-question`, {data});
+  }
   
 
 }

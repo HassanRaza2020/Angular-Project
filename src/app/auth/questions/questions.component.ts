@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef,ViewChild,EventEmitter,Output } from '@an
 import { ApiService } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { EditComponent } from '../edit/edit.component';
 
 
@@ -20,6 +20,7 @@ export class QuestionsComponent {
   message = [];
   searchData = [];
   questions = [];
+  questionId:string ='';
 
   constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog:MatDialog) { }
 
@@ -32,15 +33,19 @@ export class QuestionsComponent {
 
         if (data) {
           console.log("Received Search Data:", data);
-          this.message = [];
-        }
-        if (data) {
           this.searchData = data;
+        }
+
+        else
+        {
+          console.log("Message not received:", data);  
         }
         console.log("Display searchData:", this.searchData);
         console.log("Display message:", this.message);
 
       })
+
+
     })
 
 
@@ -53,7 +58,6 @@ export class QuestionsComponent {
       if (this.searchData) {
         this.searchData = this.searchData.filter(q => q.question_id !== questionKey);
       }
-
 
       if (this.message) {
         this.message = this.message.filter(q => q.question_id !== questionKey);
@@ -68,7 +72,14 @@ export class QuestionsComponent {
     width:'400px',
     data:{message:'Hello form parent component!'}
    });
+
   }
+
+  setQuestionId(questionId:any){
+  this.sharedService.setQuestion(questionId);
+  }
+
+
 
 
 
