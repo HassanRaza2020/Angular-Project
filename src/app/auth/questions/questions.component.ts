@@ -73,7 +73,9 @@ export class QuestionsComponent {
 
   openModal() {
    this.dialog.open(EditComponent, {
-    width:'450px',data:{message:'Hello form parent component!'}
+    width:'450px',
+    height:'500px',
+    data:{message:'Hello form parent component!'}
    });
 
   }
