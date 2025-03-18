@@ -45,6 +45,9 @@ editQuestion(): void {
   );}
 
 
+  isRequired():boolean{
+    return false
+  }
 
 
 }

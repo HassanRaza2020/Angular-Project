@@ -31,7 +31,12 @@ form{
     margin-left: 10px;
 }
 
-
+/* Add constraints message */
+.constraints-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
 
 /* Add responsiveness */
 @media (max-width: 768px) {
@@ -51,8 +56,9 @@ form{
         margin-left: 5px;
     }
 
-     
- 
+    .constraints-message {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -70,5 +76,9 @@ form{
 
     form {
         margin-left: 0;
+    }
+
+    .constraints-message {
+        font-size: 10px;
     }
 }
