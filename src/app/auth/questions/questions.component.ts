@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef,ViewChild,EventEmitter,Output } from '@an
 import { ApiService } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared.service';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';  
 import { EditComponent } from '../edit/edit.component';
 
 
@@ -16,13 +16,16 @@ import { EditComponent } from '../edit/edit.component';
 export class QuestionsComponent {
 
 
-
+  user_id:string ='';
   message = [];
   searchData = [];
   questions = [];
   questionId:string ='';
 
   constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog:MatDialog) { }
+
+
+
 
   ngOnInit(): void {
     this.apiService.getQuestion().subscribe(response => {
@@ -44,9 +47,10 @@ export class QuestionsComponent {
         console.log("Display message:", this.message);
 
       })
-
-
     })
+
+    this.user_id = localStorage.getItem('user_id');
+    console.log("User ID:", this.user_id);
 
 
   };
@@ -69,21 +73,11 @@ export class QuestionsComponent {
 
   openModal() {
    this.dialog.open(EditComponent, {
-    width:'400px',
-    data:{message:'Hello form parent component!'}
+    width:'450px',data:{message:'Hello form parent component!'}
    });
 
   }
 
   setQuestionId(questionId:any){
   this.sharedService.setQuestion(questionId);
-  }
-
-
-
-
-
-
-
-
-}
+  }}

@@ -3,6 +3,9 @@ import { animate,style,state, transition, trigger, animation } from '@angular/an
 import { SharedService } from 'src/app/shared.service';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router'; 
+import { SnackbarComponent } from 'src/app/snackbar/snackbar/snackbar.component';
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 
 
 @Component({
@@ -25,8 +28,10 @@ export class LoginComponent {
   message:string = '';
   receivedMessage:string = '';
   userLogin = {email:"", password:""};
+  data = "Login successfully";
 
-  constructor(private sharedService:SharedService , private apiService:ApiService, private router:Router) {  
+
+  constructor(private sharedService:SharedService , private apiService:ApiService, private router:Router, private snackBar:MatSnackBar){  
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
@@ -47,7 +52,7 @@ export class LoginComponent {
     const token = localStorage.getItem('auth_token')
     console.log("token", token)
     this.router.navigate(['/question']);
-   
+    
 
     // console.log('auth_token', response.token);
     // console.log('user_id', response.user_id);
@@ -67,5 +72,15 @@ export class LoginComponent {
     }}
   )}
    
+  showBasicComponent() {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      data: this.data,
+      duration: 2000
+    });
+  }
+
+
+
+  
 
 }

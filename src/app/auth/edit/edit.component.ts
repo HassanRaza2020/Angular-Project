@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,ChangeDetectorRef} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared.service';
@@ -15,16 +15,17 @@ private subcription:Subscription;
 
 
 categoryList:any[];
-addQuestion={description:'',title:'', questionId:''};
+addQuestion={description:'',title:'', question_id:''};
 responseMessage:string = '';
 questionData:string[];
+
 
 constructor(public dialogRef:MatDialogRef<EditComponent>, private sharedService:SharedService, private apiService:ApiService){}
 
 ngOnInit(){
   this.subcription = this.sharedService.questionId$.subscribe(data=>{
-  this.addQuestion.questionId = data;
-  console.log("Received1:",this.addQuestion.questionId);
+  this.addQuestion.question_id = data;
+  console.log("Received1:",this.addQuestion.question_id);
   })
 }
 
@@ -32,15 +33,16 @@ closeModal(){
   this.dialogRef.close();
 }
 
-editQuestion():void{
-this.apiService.editQuestion(this.addQuestion).subscribe(response=>{
-  
-  this.questionData = response;
-  console.log("updated successfully", this.questionData);
-});
-
-}
-
+editQuestion(): void {
+  this.apiService.editQuestion(this.addQuestion).subscribe(
+    (response) => {
+      console.log("Updated successfully:", response);
+      window.location.reload();
+    },
+    (error) => {
+      console.error("Update Failed:", error);
+    }
+  );}
 
 
 

@@ -18,10 +18,6 @@ export class SharedService {
   searchData$:Observable<any> = this.searchData.asObservable();
   questionId$:Observable<any> = this.questionId.asObservable(); 
       
-
-
-
-  
   changeData(data: any) 
   {
     this.dataSource.next(data);

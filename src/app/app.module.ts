@@ -17,13 +17,16 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthModule } from "./auth/auth.module";
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditComponent } from './auth/edit/edit.component';
+import { SnackbarComponent } from './snackbar/snackbar/snackbar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, SnackbarComponent],
   imports: [
     BrowserModule,
     SharedModule, // Import the SharedModule so NavbarComponent is available
@@ -32,7 +35,10 @@ import { EditComponent } from './auth/edit/edit.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatSnackBarModule
+  
 ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

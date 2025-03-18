@@ -18,7 +18,11 @@
                 <p>{{ msg.username }}</p>
                 <a class="question-list">{{ msg.title }}</a>
                 <p>{{ datepipe.transform(msg.updated_at, 'yyyy/MM/dd hh:mm a') }}</p>
-                <button (click)="deleteQuestion(msg.question_id)" class="btn btn-light">
+                
+               
+               
+               
+                <button (click)="deleteQuestion(msg.question_id)" class="btn btn-light"  *ngIf="user_id==msg.user_id">
                     <svg width="16" height="16" class="bi-trash" viewBox="0 0 16 16">
                         <path
                             d="M5.5 5.5A.5.5 0 0   6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
@@ -27,8 +31,9 @@
                     </svg>
                 
                 </button>
-
-                <button type="button" class="btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="openModal()"  (click)="setQuestionId(msg.question_id)">
+               
+             
+                <button type="button" class="btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="openModal()"  (click)="setQuestionId(msg.question_id)" *ngIf="user_id==msg.user_id">
 
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
