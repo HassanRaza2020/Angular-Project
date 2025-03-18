@@ -1,8 +1,7 @@
 <div class="edit-question">
 
 <div class="question-section">
-    <button mat-button (click)="closeModal()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABKElEQVR4nO2YzU7CQBRGz+PogldAZYE/rJSCO3CJoLj0kX0A5SeAlDShhpAZ2tA6nU6+k3TXuZmT2+nce0EIIYQQQvhIA3guMV4LuMExl8AXsAGGJcRrAt/AzKVMKhHvn9+CMlfAz0G8GXCNA/r7TMQlyLSB+VGsLfCGIxKZtWEDoxIkPnBMzyLzmmPtLbAwrJ1SERGwMmxofGLNnW8S58h4K5HStchM/t6Ae4vEO57RAZaWP1BtJFIeLZnJypaXPBgyU9k98V8ytZIIRqST49Py9pAHddifTmy4Nr/fbo7b3ftbPQqhRInOqIBtla/z8j2rjB/l7EW8kOkbJJIu8aVgYxUDnzgimFb34mj4UHSS0qxq+HAok0gMqOk4KKgBnRBCCCGEIJMdXBTwCqWDRf4AAAAASUVORK5CYII=" alt="multiply"></button>
-
+    
     <form (ngSubmit)="editQuestion()">
         <h3>Questions</h3>    
 
@@ -13,11 +12,14 @@
     
        <div class="col-5 offset-sm margin-bottom-15" >
             <label for="text">Description</label>
-            <textarea rows="5" cols="60"placeholder  ="Add Description.." [(ngModel)]="addQuestion.description" name="description" ></textarea>
+            <textarea rows="5" cols="60"placeholder  ="Add Description.." [(ngModel)]="addQuestion.description" name="description" required></textarea>
         </div> 
 
         <input  [(ngModel)]="addQuestion.question_id" name="question_id" hidden>       
         <button class="post-button" type="submit"  (click)="closeModal()">Post</button>
+        <button class="close-button"  (click)="closeModal()">Cancel</button>
+    
+    
     </form>
 </div>
 </div>
