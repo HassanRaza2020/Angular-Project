@@ -51,8 +51,8 @@ export class LoginComponent {
         console.log("Login Done!!!");
         const token = localStorage.getItem('auth_token')
         console.log("token", token)
-        this.showBasicComponent(this.data);
         this.router.navigate(['/question']);
+        this.showBasicComponent(this.data);
       
       },
       error: (error) => {  

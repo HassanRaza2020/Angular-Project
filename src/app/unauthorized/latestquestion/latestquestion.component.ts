@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-latestquestion',
@@ -8,13 +9,17 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LatestquestionComponent {
  
-  message:string = '';
+  message=[];
 
-  constructor(private apiService:ApiService){}
+  constructor(private apiService:ApiService, public datepipe:DatePipe){}
 
   ngOnInit(): void {
-    this.apiService.getTestData().subscribe(response => {
-      this.message = response.message;
+    this.apiService.getLatestQuestion().subscribe(response => {
+      if (Array.isArray(response)) {
+        this.message = response; // ✅ Set if it's an array
+      } else {
+        this.message = [response]; // ✅ Convert object to array
+      }
     });
 
 

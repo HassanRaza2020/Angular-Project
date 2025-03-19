@@ -1,5 +1,34 @@
+
 h2{
     font-family: cursive;
+    margin-top: 20px;
     color: red;
-    text-align: center;
+    margin-left: 50px;
+}
+
+.question-section{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.question-content{
+    border: 1px solid #ddd;
+    padding: 10px 20px 15px 10px;
+    margin: 10px 0; /* Adds vertical spacing between elements */
+    border-radius: 10px;
+    display: block; 
+    width: fit-content;
+    
+}
+
+.question-list{
+    text-decoration: none;
+    color: black;
+    font-family: cursive;
+    
+}
+
+p{
+    font-family: cursive;
+    font-size: small;
+    
 }

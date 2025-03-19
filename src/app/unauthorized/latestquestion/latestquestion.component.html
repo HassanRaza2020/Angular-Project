@@ -1,2 +1,15 @@
- <h2>Latest Questions</h2>
- {{message}}
+<h2>Latest Questions</h2>
+
+
+<div *ngIf="message && message.length > 0; else noData" class="question-section">
+    <div *ngFor="let msg of message" class="question-content">
+      <p>{{ msg.username }}</p>
+      <a class="question-list">{{ msg.title }}</a>
+      <p>{{ datepipe.transform(msg.update_at, 'yyyy/MM/dd hh:mm a') }}</p> 
+    </div> 
+  </div>
+  
+  <ng-template #noData>
+    <p>No questions available.</p>
+  </ng-template>
+  

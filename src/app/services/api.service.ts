@@ -20,7 +20,7 @@ export class ApiService {
       tap((response) => {
         console.log('Success:', response);
       }),
-      catchError(this.handleError) // ✅ Catch errors
+      catchError(this.handleError)  //catch the error here 
     );
   } 
 
@@ -39,7 +39,7 @@ export class ApiService {
   }
 
 
-  postMethod(data:any):Observable<any>{
+  sentSingupData(data:any):Observable<any>{
     const payload = {data:data,};
 
     return this.http.post(`${this.apiUrl}/signup`, payload, {
@@ -59,6 +59,10 @@ export class ApiService {
 
   getQuestion(): Observable<any> {
     return this.http.get(`${this.apiUrl}/question`);
+  }
+
+  getLatestQuestion(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/latest-question`);
   }
 
   getCategory():Observable<any>{
