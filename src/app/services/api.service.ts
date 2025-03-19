@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +12,17 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  postTestData(userData: any): Observable<any> {
-    
- 
-    return this.http.post(`${this.apiUrl}/signup`, userData, {
-      headers: { 'Content-Type': 'application/json' }      
-    }).pipe(catchError(this.handleError));
-  }
   
+  postSignUp(userData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/signup`, userData, {
+      headers: { 'Content-Type': 'application/json' },
+    }).pipe(
+      tap((response) => {
+        console.log('Success:', response);
+      }),
+      catchError(this.handleError) // ✅ Catch errors
+    );
+  } 
 
   getTestData(): Observable<any> {
       return this.http.get(`${this.apiUrl}/test`);
@@ -27,7 +30,7 @@ export class ApiService {
 
   
    
-  postVerificationData(otp:any, data:any):Observable<any>{
+  postVerification(otp:any, data:any):Observable<any>{
     const payload = {otp:otp, data:data,};
 
     return this.http.post(`${this.apiUrl}/verification`, payload, {
@@ -74,11 +77,7 @@ export class ApiService {
   
 
   postLogin(data:any):Observable<any>{
-    // localStorage.setItem('auth_token', data.token);
-    // localStorage.setItem('user_id', data.user_id);
-    // localStorage.setItem('username', data.username);
-    // localStorage.setItem('email', data.email);
-
+   
     return this.http.post(`${this.apiUrl}/login`, data, {withCredentials:true}).pipe(
       tap((response)=>{
 
@@ -90,6 +89,7 @@ export class ApiService {
     localStorage.setItem('user_id', response.user_id);
     localStorage.setItem('username', response.username);
     localStorage.setItem('email', response.email);
+  
   } 
 
       })

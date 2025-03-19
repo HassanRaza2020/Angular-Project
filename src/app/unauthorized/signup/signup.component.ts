@@ -3,8 +3,8 @@ import { animate,style,state, transition, trigger, query } from '@angular/animat
 import { ApiService } from 'src/app/services/api.service';
 import { SharedService } from 'src/app/shared.service';
 import { Router } from '@angular/router';
-
-
+import { SnackbarComponent } from 'src/app/snackbar/snackbar/snackbar.component';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-signup',
@@ -24,8 +24,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
   imageAnimation: string = 'hidden';
-
-  constructor(private apiService:ApiService , private router: Router, private sharedService:SharedService ) { 
+  
+  constructor(private apiService:ApiService , private router: Router, private sharedService:SharedService, private snackBar:MatSnackBar) { 
     setTimeout(() => {
       this.imageAnimation = 'visible';
     }, 500);
@@ -43,19 +43,19 @@ export class SignupComponent {
     if(!this.user.username || !this.user.email || !this.user.password || !this.user.address ){
       this.responseMessage = "All fields are required.";}
 
-      this.apiService.postTestData(this.user).subscribe({
+      this.apiService.postSignUp(this.user).subscribe({
         next: (response) => {
           // console.log('Success:', response);
           this.responseMessage = response.message;
           console.log('Form submitted', this.user);
           this.sendMessage();
          
-         
 
         },
         error: (error) => {
           console.error('Error:', error);
           this.responseMessage = 'Registration failed. Please try again.';
+          this.showBasicComponent(error);
         },
         complete:() => {
           console.log('Request completed');
@@ -74,7 +74,18 @@ export class SignupComponent {
   
   responseMessage : string ='';
 
+
+  showBasicComponent(error: any) {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      data: error.message,       
+      duration: 2000,
+    });
+    console.error("Snackbar Error:", error); // Log separately
+  }
   
+
+
+
 
 
 
