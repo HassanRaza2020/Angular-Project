@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef,ViewChild,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, EventEmitter, Output } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared.service';
-import { MatDialog} from '@angular/material/dialog';  
+import { MatDialog } from '@angular/material/dialog';
 import { EditComponent } from '../edit/edit.component';
 
 
@@ -16,13 +16,13 @@ import { EditComponent } from '../edit/edit.component';
 export class QuestionsComponent {
 
 
-  user_id:string ='';
+  user_id: string = '';
   message = [];
   searchData = [];
   questions = [];
-  questionId:string ='';
+  questionId: string = '';
 
-  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog:MatDialog) { }
+  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog) { }
 
 
 
@@ -39,9 +39,8 @@ export class QuestionsComponent {
           this.searchData = data;
         }
 
-        else
-        {
-          console.log("Message not received:", data);  
+        else {
+          console.log("Message not received:", data);
         }
         console.log("Display searchData:", this.searchData);
         console.log("Display message:", this.message);
@@ -72,14 +71,15 @@ export class QuestionsComponent {
   }
 
   openModal() {
-   this.dialog.open(EditComponent, {
-    width:'450px',
-    height:'500px',
-    data:{message:'Hello form parent component!'}
-   });
+    this.dialog.open(EditComponent, {
+      width: '450px',
+      height: '500px',
+      data: { message: 'Hello form parent component!' }
+    });
 
   }
 
-  setQuestionId(questionId:any){
-  this.sharedService.setQuestion(questionId);
-  }}
+  setQuestionId(questionId: any) {
+    this.sharedService.setQuestion(questionId);
+  }
+}

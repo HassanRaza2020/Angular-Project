@@ -51,22 +51,21 @@ export class LoginComponent {
         console.log("Login Done!!!");
         const token = localStorage.getItem('auth_token')
         console.log("token", token)
+        this.showBasicComponent(this.data);
         this.router.navigate(['/question']);
-
+        
 
       },
-
-
-      error: (error) => {
-        console.error(error);
+      error: (error) => {  
+        this.showBasicComponent(error);
       }
     }
     )
   }
 
-  showBasicComponent() {
+  showBasicComponent(error:any) {
     this.snackBar.openFromComponent(SnackbarComponent, {
-      data: this.data,
+      data: error['message'],
       duration: 2000,
     });
   }
