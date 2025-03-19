@@ -53,8 +53,7 @@ export class LoginComponent {
         console.log("token", token)
         this.showBasicComponent(this.data);
         this.router.navigate(['/question']);
-        
-
+      
       },
       error: (error) => {  
         this.showBasicComponent(error);
@@ -65,7 +64,7 @@ export class LoginComponent {
 
   showBasicComponent(error:any) {
     this.snackBar.openFromComponent(SnackbarComponent, {
-      data: error['message'],
+      data: error.error.message,
       duration: 2000,
     });
   }
