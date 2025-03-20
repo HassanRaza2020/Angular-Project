@@ -24,9 +24,6 @@ export class QuestionsComponent {
 
   constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog) { }
 
-
-
-
   ngOnInit(): void {
     this.apiService.getQuestion().subscribe(response => {
       this.message = response;
