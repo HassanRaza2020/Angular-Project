@@ -21,6 +21,7 @@ export class QuestionsComponent {
   searchData = [];
   questions = [];
   questionId: string = '';
+  isVisible: boolean = true;
 
   constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog) { }
 
@@ -79,4 +80,6 @@ export class QuestionsComponent {
   setQuestionId(questionId: any) {
     this.sharedService.setQuestion(questionId);
   }
+
+  
 }

@@ -5,7 +5,7 @@
     <div *ngFor="let msg of message" class="question-content">
       <p>{{ msg.username }}</p>
       <a class="question-list">{{ msg.title }}</a>
-      <p>{{ datepipe.transform(msg.update_at, 'yyyy/MM/dd hh:mm a') }}</p> 
+      <p>{{ datepipe.transform(msg.created_at, 'yyyy/MM/dd hh:mm a') }}</p> 
     </div> 
   </div>
   
