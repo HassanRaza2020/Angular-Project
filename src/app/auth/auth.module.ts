@@ -6,11 +6,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { QuestionsComponent } from './questions/questions.component';
 import { PostQuestionComponent } from './post-question/post-question.component';
 import { EditComponent } from './edit/edit.component';
+import { AnswersComponent } from './answers/answers.component';
+import { PostAnswersComponent } from './post-answers/post-answers.component';
 
 
 @NgModule({
   declarations: [
   
+  
+    AnswersComponent,
+          PostAnswersComponent
   ],
   imports: [
     CommonModule,
