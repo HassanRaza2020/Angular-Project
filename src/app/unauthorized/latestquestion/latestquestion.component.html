@@ -2,14 +2,13 @@
 
 
 <div *ngIf="message && message.length > 0; else noData" class="question-section">
-    <div *ngFor="let msg of message" class="question-content">
-      <p>{{ msg.username }}</p>
-      <a class="question-list">{{ msg.title }}</a>
-      <p>{{ datepipe.transform(msg.created_at, 'yyyy/MM/dd hh:mm a') }}</p> 
-    </div> 
+  <div *ngFor="let msg of message" class="question-content">
+    <p>{{ msg.username }}</p>
+    <a class="question-list">{{ msg.title }}</a>
+    <p>{{ datepipe.transform(msg.created_at, 'yyyy/MM/dd hh:mm a') }}</p>
   </div>
-  
-  <ng-template #noData>
-    <p>No questions available.</p>
-  </ng-template>
-  
+</div>
+
+<ng-template #noData>
+  <p>No questions available.</p>
+</ng-template>

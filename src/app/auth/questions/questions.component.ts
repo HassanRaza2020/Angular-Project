@@ -4,7 +4,8 @@ import { DatePipe } from '@angular/common';
 import { SharedService } from 'src/app/shared.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditComponent } from '../edit/edit.component';
-
+import { SnackbarComponent } from 'src/app/snackbar/snackbar/snackbar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class QuestionsComponent {
   questionId: string = '';
   isVisible: boolean = true;
 
-  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog) { }
+  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog, private matSnackBar:MatSnackBar) { }
 
   ngOnInit(): void {
     this.apiService.getQuestion().subscribe(response => {
@@ -54,8 +55,11 @@ export class QuestionsComponent {
 
   deleteQuestion(questionKey: number) {
     this.apiService.deleteQuestion(questionKey).subscribe(data => {
-      console.log("Deleted Key:", data);
-
+      console.log("Deleted successfully:", data); 
+      this.matSnackBar.openFromComponent(SnackbarComponent, {
+        data: "Question deleted successfully",
+        duration: 3000
+      });
       if (this.searchData) {
         this.searchData = this.searchData.filter(q => q.question_id !== questionKey);
       }
