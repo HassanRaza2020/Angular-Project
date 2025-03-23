@@ -24,7 +24,7 @@ export class QuestionsComponent {
   questionId: string = '';
   isVisible: boolean = true;
 
-  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog, private matSnackBar:MatSnackBar) { }
+  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.apiService.getQuestion().subscribe(response => {
@@ -55,7 +55,7 @@ export class QuestionsComponent {
 
   deleteQuestion(questionKey: number) {
     this.apiService.deleteQuestion(questionKey).subscribe(data => {
-      console.log("Deleted successfully:", data); 
+      console.log("Deleted successfully:", data);
       this.matSnackBar.openFromComponent(SnackbarComponent, {
         data: "Question deleted successfully",
         duration: 3000
@@ -85,5 +85,5 @@ export class QuestionsComponent {
     this.sharedService.setQuestion(questionId);
   }
 
-  
+
 }

@@ -100,6 +100,10 @@ export class ApiService {
     return this.http.put(`${this.apiUrl}/edit-question`, data );  //edit question api
 
   }
+
+  postAnswer(data:any):Observable<any>{ 
+    return this.http.post(`${this.apiUrl}/post-answer`, data);  //post answer api
+  }
   
 
 }

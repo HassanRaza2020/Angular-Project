@@ -49,17 +49,10 @@ export class NavbarComponent implements OnInit {
       console.log("Search data:", response);
       this.sharedService.sentSearchData(response);
     },
-
-    
-
-
-    
-
     error =>{
       console.error("Search Error:", error);
     }
-    
-    
+      
     
     );
   }
