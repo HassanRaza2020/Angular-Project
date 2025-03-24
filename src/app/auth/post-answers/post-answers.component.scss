@@ -1,0 +1,55 @@
+
+h3
+{
+    font-family: cursive;
+    color:red;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+h6{
+    font-family: cursive;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom:10px ;
+   
+}
+
+p{
+    font-family: cursive;
+    margin-left: 40px;
+}
+
+.view-question-section{
+    border: 1px solid #ddd;
+    padding: 10px 20px 15px 10px;
+    margin: 10px 0; /* Adds vertical spacing between elements */
+    border-radius: 10px;
+    display: block; /* Makes each div take up its own row */
+    width: 60%; /* Adjust the width as needed */
+    margin-left: 20px;
+    word-wrap: break-word; /* Ensures long words break and wrap */
+    white-space: normal; /* Ensures text wraps to the next line */
+}   
+
+textarea{
+    margin-left: 40px;
+    border-radius: 10px;
+    width: 60%; /* Adjust the width as needed */
+    display: block; /* Ensures the textarea takes up its own row */
+    margin-bottom: 10px; /* Adds space below the textarea */
+}
+
+button{
+    margin-left:480px;
+    display: block;
+    width: 10%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    font-family: cursive;   
+
+    
+    
+}

@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditComponent } from '../edit/edit.component';
 import { SnackbarComponent } from 'src/app/snackbar/snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -24,13 +24,19 @@ export class QuestionsComponent {
   questionId: string = '';
   isVisible: boolean = true;
 
-  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog, private matSnackBar: MatSnackBar) { }
+  constructor(private apiService: ApiService, public datepipe: DatePipe, public sharedService: SharedService, private dialog: MatDialog, private matSnackBar: MatSnackBar, private router:Router) {
+    
+   }
 
   ngOnInit(): void {
     this.apiService.getQuestion().subscribe(response => {
       this.message = response;
-      console.log("data", this.message);
+    //  this.router.navigate(['view-answer', {data:this.message}]);  
 
+
+      console.log("data", this.message);
+   
+        
       this.sharedService.searchData$.subscribe(data => {
 
         if (data) {
@@ -85,5 +91,9 @@ export class QuestionsComponent {
     this.sharedService.setQuestion(questionId);
   }
 
+  
+
+    
+  
 
 }

@@ -21,13 +21,14 @@ import { SnackbarComponent } from './snackbar/snackbar/snackbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LatestquestionComponent } from './unauthorized/latestquestion/latestquestion.component';
+import { PostAnswersComponent } from './auth/post-answers/post-answers.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, SnackbarComponent,LatestquestionComponent],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, SnackbarComponent,LatestquestionComponent, PostAnswersComponent],
   imports: [
     BrowserModule,
     SharedModule, // Import the SharedModule so NavbarComponent is available

@@ -1,1 +1,18 @@
-<h3>{{data['username']}}</h3>
+<div class="view-question-section">
+
+<h6>{{this.questionData['username']}}</h6>    
+<h3>{{this.questionData['title']}}</h3>
+<p>{{this.questionData['description']}}</p>
+
+<form (ngSubmit)="postAnswer()">
+
+    <textarea name="description" id="description" cols="50" rows="3" [(ngModel)]="addAnswer.description"></textarea>
+    <input name="user_id" [(ngModel)]="this.addAnswer.user_id" hidden>
+    <input name="username" [(ngModel)]="this.addAnswer.username" hidden>
+    <input name="question_id" [(ngModel)]="this.addAnswer.question_id" hidden>
+    <button>Post</button>
+    
+</form>
+
+
+</div>

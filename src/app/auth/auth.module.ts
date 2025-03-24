@@ -15,7 +15,6 @@ import { PostAnswersComponent } from './post-answers/post-answers.component';
   
   
     AnswersComponent,
-          PostAnswersComponent
   ],
   imports: [
     CommonModule,
