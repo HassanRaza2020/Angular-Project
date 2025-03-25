@@ -104,6 +104,15 @@ export class ApiService {
   postAnswer(data:any):Observable<any>{ 
     return this.http.post(`${this.apiUrl}/post-answer`, data);  //post answer api
   }
+
+  getAnswers(questionId:string):Observable<any>{
+    console.log("Question IDs:", questionId);
+
+    return this.http.get(`${this.apiUrl}/answers/${questionId}`,{
+      params:{questionId} 
+    });
+      }
+ 
   
 
 }

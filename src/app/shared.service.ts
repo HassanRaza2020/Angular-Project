@@ -12,12 +12,17 @@ export class SharedService {
   private dataSource = new BehaviorSubject<string>('default data');
   private searchData = new BehaviorSubject<any>(null);
   private questionId = new BehaviorSubject<any>(null);
+  private questionDetailsSource = new BehaviorSubject<any>(null);
+
+  
 
   currentData = this.dataSource.asObservable();
   loginData = this.dataSource.asObservable();
   searchData$:Observable<any> = this.searchData.asObservable();
   questionId$:Observable<any> = this.questionId.asObservable(); 
-      
+  sharedQuestionDetails$ = this.questionDetailsSource.asObservable();
+
+ 
   changeData(data: any) 
   {
     this.dataSource.next(data);
@@ -33,8 +38,13 @@ export class SharedService {
   
   getQuestion():any|null{
     return this.questionId.getValue();
+   }
 
+   updateQuestionDetails(questionData: any) {
+    this.questionDetailsSource.next(questionData);
   }
+  
+
 
 
  

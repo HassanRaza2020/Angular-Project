@@ -13,8 +13,6 @@ import { PostAnswersComponent } from './post-answers/post-answers.component';
 @NgModule({
   declarations: [
   
-  
-    AnswersComponent,
   ],
   imports: [
     CommonModule,
