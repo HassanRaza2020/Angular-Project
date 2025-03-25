@@ -7,7 +7,7 @@
             <div class="col-8 offset-sm margin-bottom-15">
                 <label for="title">Title</label>
                 <input id="title" class="form-control" placeholder="Add Title..." [(ngModel)]="addQuestion.title"
-                    name="title" type="text" maxlength="20" required />
+                name="title" type="text" maxlength="20" required />
             </div>
 
             <div class="col-5 offset-sm margin-bottom-15">
@@ -15,7 +15,6 @@
                 <textarea id="description" rows="5" cols="10" placeholder="Add Description.."
                     [(ngModel)]="addQuestion.description" name="description" required maxlength="40"></textarea>
             </div>
-
             <input [(ngModel)]="addQuestion.question_id" name="question_id" hidden>
             <button class="post-button" type="submit" [disabled]="editForm.invalid" (click)="closeModal()">Post</button>
             <button class="close-button" (click)="closeModal()">Cancel</button>

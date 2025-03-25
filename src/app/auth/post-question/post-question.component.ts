@@ -42,6 +42,7 @@ export class PostQuestionComponent {
             data: this.message,
             duration: 3000,
           });
+          this.router.navigate(['/question']);
         },
         error: (error) => {
           console.error('Error:', error);
