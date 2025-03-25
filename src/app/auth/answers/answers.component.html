@@ -1,11 +1,11 @@
 
-<div *ngIf="answers && answers.length>0; else noAnswers">
-<div *ngFor="let answer of answers">
+<div  *ngIf="answers && answers.length>0; else noAnswers">
+
+<div class="answer-list" *ngFor="let answer of answers">
 <p>{{answer['Username']}}</p>
 <p>{{answer['Description']}}</p>
 
 </div>
-
 </div>
 
 
