@@ -32,11 +32,7 @@ export class QuestionsComponent {
     this.apiService.getQuestion().subscribe(response => {
       this.message = response;
     //  this.router.navigate(['view-answer', {data:this.message}]);  
-
-
       console.log("data", this.message);
-   
-        
       this.sharedService.searchData$.subscribe(data => {
 
         if (data) {
@@ -92,7 +88,8 @@ export class QuestionsComponent {
   }
 
   
-
+  
+ 
     
   
 

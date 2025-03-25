@@ -38,7 +38,6 @@ export class PostQuestionComponent {
       this.apiService.postQuestion(this.addQuestion).subscribe({
         next: (response) => {
           this.addQuestion = response;
-          this.router.navigate(['/question']);
           this.matSnackBar.openFromComponent(SnackbarComponent, {
             data: this.message,
             duration: 3000,

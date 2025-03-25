@@ -1,2 +1,14 @@
 
-<h4>{{this.answers['Description']}}</h4>
+<div *ngIf="answers && answers.length>0; else noAnswers">
+<div *ngFor="let answer of answers">
+<p>{{answer['Username']}}</p>
+<p>{{answer['Description']}}</p>
+
+</div>
+
+</div>
+
+
+<ng-template #noAnswers>
+    <p>No answers available.</p>
+  </ng-template>

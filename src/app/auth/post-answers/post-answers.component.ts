@@ -24,6 +24,8 @@ ngOnInit(): void {
     this.addAnswer.user_id = localStorage.getItem('user_id') || '';
     this.addAnswer.username = localStorage.getItem('username') || '';
     this.addAnswer.question_id = this.questionData['question_id'];
+    localStorage.setItem('question_id', this.questionData['question_id']);
+
     console.log("Question Data:", this.questionData);
   });
 }
@@ -32,7 +34,7 @@ postAnswer(): void {
   this.apiService.postAnswer(this.addAnswer).subscribe({
     next: (response) => {
       console.log("Response:", response);
-     // this.refreshComponent();
+    this.refreshComponent();
      this.sendQuestionDetails();
    },
     error: (error) => {

@@ -21,7 +21,7 @@ export class AnswersComponent {
       console.log("Question ID:",this.details.question_id);
     })
 
-    this.apiService.getAnswers(this.details.question_id).subscribe(
+    this.apiService.getAnswers(localStorage.getItem('question_id')).subscribe(
       (response) => {
         this.answers = response;
         console.log("Answers:", this.answers);

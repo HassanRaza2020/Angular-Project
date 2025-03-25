@@ -23,12 +23,9 @@ export class ApiService {
       catchError(this.handleError)  //catch the error here 
     );
   } 
-
  
-  
   postVerification(otp:any, data:any):Observable<any>{
     const payload = {otp:otp, data:data,};
-
     return this.http.post(`${this.apiUrl}/verification`, payload, { //verification api for email
       headers:{'Content-Type':`application/json`}
     })
