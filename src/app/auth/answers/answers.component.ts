@@ -15,9 +15,12 @@ export class AnswersComponent {
 
   answers:string[];
   details:any;
+  userId = '';
   constructor(private apiService:ApiService, private sharedService:SharedService, public datepipe:DatePipe, private snackBar:MatSnackBar, private dialog:MatDialog) { }
 
   ngOnInit(): void {
+
+   this.userId = localStorage.getItem('user_id'); 
     
     this.sharedService.sharedQuestionDetails$.subscribe(response => {
       console.log("Received:", response);
