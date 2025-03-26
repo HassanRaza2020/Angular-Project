@@ -8,11 +8,11 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://127.0.0.1:8000/api'; 
+  private apiUrl = 'http://127.0.0.1:8000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  
+
   postSignUp(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/signup`, userData, {
       headers: { 'Content-Type': 'application/json' },
@@ -22,19 +22,19 @@ export class ApiService {
       }),
       catchError(this.handleError)  //catch the error here 
     );
-  } 
- 
-  postVerification(otp:any, data:any):Observable<any>{
-    const payload = {otp:otp, data:data,};
+  }
+
+  postVerification(otp: any, data: any): Observable<any> {
+    const payload = { otp: otp, data: data, };
     return this.http.post(`${this.apiUrl}/verification`, payload, { //verification api for email
-      headers:{'Content-Type':`application/json`}
+      headers: { 'Content-Type': `application/json` }
     })
   }
 
-  postQuestion(data:any):Observable<any>{
-    const payload = {data:data,};
+  postQuestion(data: any): Observable<any> {
+    const payload = { data: data, };
     return this.http.post(`${this.apiUrl}/post-question`, payload, { //post question api
-      headers:{'Content-Type':`application/json`}
+      headers: { 'Content-Type': `application/json` }
     })
   }
 
@@ -46,70 +46,78 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/latest-question`);  //get latest question api
   }
 
-  getCategory():Observable<any>{
+  getCategory(): Observable<any> {
     return this.http.get(`${this.apiUrl}/category`); //get all categories api
   }
 
 
-  private handleError(error:HttpErrorResponse){
-    if(error.status==422){
+  private handleError(error: HttpErrorResponse) {
+    if (error.status == 422) {
       return throwError(error.error);
     }
-    else{
-      return throwError({message:"Something went wrong, try again later"});
+    else {
+      return throwError({ message: "Something went wrong, try again later" });
     }
   };
-  
 
-  postLogin(data:any):Observable<any>{
-   
-    return this.http.post(`${this.apiUrl}/login`, data, {withCredentials:true}).pipe(  //user authentication api for login
-      tap((response)=>{
 
-    if(response.token){
-      
-    localStorage.setItem('auth_token', response.token);
-    localStorage.setItem('user_id', response.user_id);
-    localStorage.setItem('username', response.username);
-    localStorage.setItem('email', response.email);
-  
-  } 
+  postLogin(data: any): Observable<any> {
+
+    return this.http.post(`${this.apiUrl}/login`, data, { withCredentials: true }).pipe(  //user authentication api for login
+      tap((response) => {
+
+        if (response.token) {
+
+          localStorage.setItem('auth_token', response.token);
+          localStorage.setItem('user_id', response.user_id);
+          localStorage.setItem('username', response.username);
+          localStorage.setItem('email', response.email);
+
+        }
 
       })
     );
   }
 
-    getSearch(query:string):Observable<any>{
+  getSearch(query: string): Observable<any> {
     console.log("Data:", query);
     return this.http.get(`${this.apiUrl}/search-questions`, {  //search question api
-      params:{query}
+      params: { query }
     });
   }
-   
+
   deleteQuestion(questionKey: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete-question/${questionKey}`);  //delete question api
   }
 
- 
-  editQuestion(data:any):Observable<any>{
+
+  editQuestion(data: any): Observable<any> {
 
     console.log("Data sent:", data);
-    return this.http.put(`${this.apiUrl}/edit-question`, data );  //edit question api
+    return this.http.put(`${this.apiUrl}/edit-question`, data);  //edit question api
 
   }
 
-  postAnswer(data:any):Observable<any>{ 
+  postAnswer(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/post-answer`, data);  //post answer api
   }
 
-  getAnswers(questionId:string):Observable<any>{
+  getAnswers(questionId: string): Observable<any> {
     console.log("Question IDs:", questionId);
-
-    return this.http.get(`${this.apiUrl}/answers/${questionId}`,{
-      params:{questionId} 
+    return this.http.get(`${this.apiUrl}/answers/${questionId}`, {
+      params: { questionId }
     });
-      }
- 
-  
+  }
+
+  deleteAnswer(answerKey: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete-answer/${answerKey}`);  //delete answer api
+  }
+
+  editAnswer(data: any): Observable<any> {
+    console.log("Data sent:", data);
+    return this.http.put(`${this.apiUrl}/edit-answer`, data);  //edit question api
+
+  }
+
 
 }

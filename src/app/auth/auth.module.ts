@@ -8,6 +8,7 @@ import { PostQuestionComponent } from './post-question/post-question.component';
 import { EditComponent } from './edit/edit.component';
 import { AnswersComponent } from './answers/answers.component';
 import { PostAnswersComponent } from './post-answers/post-answers.component';
+import { EditAnswerComponent } from './edit-answer/edit-answer.component';
 
 
 @NgModule({

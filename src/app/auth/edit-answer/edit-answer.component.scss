@@ -1,0 +1,74 @@
+.post-button{
+    background-color: rgb(252, 13, 13);
+    width: 20%;
+    height: 60px;
+    height: auto;
+    color: azure;
+    border-radius: 5px;
+}
+
+input{
+    width: 120%;
+    border-radius: 10px;
+}
+
+textarea{
+    border-radius: 10px;
+    width: 200%;
+}
+
+form{
+ margin-left:15px; 
+}
+
+.close-button{
+    background-color: rgb(255, 255, 255);
+    width: 20%;
+    height: 60px;
+    height: auto;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .post-button {
+        width: 50%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    form {
+        margin-left: 5px;
+    }
+
+     
+ 
+}
+
+@media (max-width: 480px) {
+    .post-button {
+        width: 80%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    form {
+        margin-left: 0;
+    }
+}

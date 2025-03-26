@@ -1,0 +1,18 @@
+<div class="edit-question">
+
+    <div class="question-section">
+
+        <form (ngSubmit)="editAnswer()" #editForm="ngForm">
+            <h3>Answer</h3>
+            
+            <div class="col-5 offset-sm margin-bottom-15">
+                <label for="description">Description</label>
+                <textarea id="description" rows="5" cols="10" placeholder="Add Description.."
+                 name="description" [(ngModel)]="this.addAnswer.description" required maxlength="40"></textarea>
+            </div>
+            <input name="question_id" hidden>
+            <button class="post-button" type="submit">Post</button>
+            <button class="close-button" (click)="closeModal()">Cancel</button>
+        </form>
+    </div>
+</div>

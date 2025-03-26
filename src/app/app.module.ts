@@ -23,13 +23,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LatestquestionComponent } from './unauthorized/latestquestion/latestquestion.component';
 import { PostAnswersComponent } from './auth/post-answers/post-answers.component';
 import { AnswersComponent } from './auth/answers/answers.component';
+import { EditAnswerComponent } from './auth/edit-answer/edit-answer.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, SnackbarComponent,LatestquestionComponent, PostAnswersComponent,AnswersComponent],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, SnackbarComponent,LatestquestionComponent, PostAnswersComponent,AnswersComponent,EditAnswerComponent
+  ],
   imports: [
     BrowserModule,
     SharedModule, // Import the SharedModule so NavbarComponent is available
@@ -46,4 +48,10 @@ import { AnswersComponent } from './auth/answers/answers.component';
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  
+}
+
+
+

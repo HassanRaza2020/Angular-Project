@@ -59,7 +59,7 @@ editQuestion(): void {
 
   refreshComponent() {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/question']);
+      this.router.navigate(['/answers']);
     });
   }
 
