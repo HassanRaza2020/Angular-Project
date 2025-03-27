@@ -12,6 +12,7 @@ import { PostQuestionComponent } from './auth/post-question/post-question.compon
 import { AuthGuard } from './services/auth.guard';
 import { PostAnswersComponent } from './auth/post-answers/post-answers.component';
 import { AnswersComponent } from './auth/answers/answers.component';
+import { DashboardComponent } from './auth/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path:'post-question', component:PostQuestionComponent,canActivate:[AuthGuard]},
   {path:'view-answer', component:PostAnswersComponent,canActivate:[AuthGuard]},
   {path:'answers', component:AnswersComponent,canActivate:[AuthGuard]},
+  {path:'dashboard', component:DashboardComponent,canActivate:[AuthGuard]},
   { path: '**', redirectTo: '', pathMatch:'full' }  
 ];
 

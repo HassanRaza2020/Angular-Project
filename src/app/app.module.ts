@@ -24,14 +24,15 @@ import { LatestquestionComponent } from './unauthorized/latestquestion/latestque
 import { PostAnswersComponent } from './auth/post-answers/post-answers.component';
 import { AnswersComponent } from './auth/answers/answers.component';
 import { EditAnswerComponent } from './auth/edit-answer/edit-answer.component';
+import { DashboardComponent } from './auth/dashboard/dashboard.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, SnackbarComponent,LatestquestionComponent, PostAnswersComponent,AnswersComponent,EditAnswerComponent
-  ],
+    AppComponent, SignupComponent,VerificationComponent,QuestionsComponent,PostQuestionComponent,LoginComponent,NavbarComponent,EditComponent, 
+    SnackbarComponent,LatestquestionComponent, PostAnswersComponent,AnswersComponent,EditAnswerComponent,DashboardComponent],
   imports: [
     BrowserModule,
     SharedModule, // Import the SharedModule so NavbarComponent is available
