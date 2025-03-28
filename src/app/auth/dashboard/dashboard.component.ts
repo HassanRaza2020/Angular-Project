@@ -10,30 +10,40 @@ Chart.register(...registerables);
 })
 export class DashboardComponent implements OnInit {
 
- constructor(){}
+ constructor(private apiService:ApiService){}
 
   public chart: any;
+  categoryCount=[];
+  categoryId = [];
+  totalCount = [];
 
   ngOnInit(): void {
+    
     this.createChart();
+    this.apiService.getDashboard().subscribe(response=>{     
+    this.categoryCount = response;
+    for(let item of this.categoryCount){
+      this.categoryId.push(item.content);
+      this.totalCount.push(item.total);
+   
+    }
+    console.log("Total:", this.totalCount);
+   
+  })
+
   }
 
   createChart() {
     this.chart = new Chart("MyChart", {
       type: 'bar',
       data: {
-        labels: ['Food', 'History', 'Sports','Fiction','Coding','Education','Science and Technology','Politics','Crimes','Others'],
+        labels: [this.categoryId],
         datasets: [
           {
             label: 'Questions',
-            data: ['467', '567', '572', '599'],
-            backgroundColor: 'blue'
-          },
-          {
-            label: 'Answers',
-            data: ['100', '120', '133', '134'],
+            data: [12,23,223,33,44,44,44,44,,44,44],
             backgroundColor: 'red'
-          }
+          },
         ]
       },
       options: {
