@@ -19,9 +19,9 @@
         <div class="form-group row">
             <label for="category" class="col-sm-2 col-form-label">Category</label>
             <div class="col-sm-10">
-                <select class="form-control" [(ngModel)]="addQuestion.category" name="category" id="category" required>
+                <select class="form-control" [(ngModel)]="addQuestion.category_name" name="category_name" required>
                     <option disabled selected>Select a category</option>
-                    <option *ngFor="let category of categoryList" [value]="category.content_id">
+                    <option *ngFor="let category of categoryList" [value]="category.content_name">
                         {{ category.content_name }}
                     </option>
                 </select>
@@ -32,7 +32,7 @@
         <input name="user_id" [(ngModel)]="this.addQuestion.user_id" hidden>        
         <div class="form-group row">
             <div class="col-sm-10 offset-sm-2">
-                <button type="submit" class="btn btn-primary">Post</button>
+                  <button type="submit" class="btn btn-primary">Post</button>
             </div>
         </div>
     </form>

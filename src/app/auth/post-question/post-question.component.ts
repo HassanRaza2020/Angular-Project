@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PostQuestionComponent {
 
   categoryList: any[];
-  addQuestion = { description: '', title: '', category: '', user_id: '', username: '' };
+  addQuestion = { description: '', title: '', category_name:'', user_id: '', username: '' };
   responseMessage: string = '';
   userId: string = '';
   userName: string = '';
@@ -33,7 +33,7 @@ export class PostQuestionComponent {
 
   sentQuestionRequest(): void {
 
-    if (this.addQuestion.category && this.addQuestion.description && this.addQuestion.title && this.addQuestion.user_id && this.addQuestion.username) {
+    if (this.addQuestion.category_name && this.addQuestion.description && this.addQuestion.title && this.addQuestion.user_id && this.addQuestion.username) {
 
       this.apiService.postQuestion(this.addQuestion).subscribe({
         next: (response) => {

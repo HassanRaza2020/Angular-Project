@@ -116,8 +116,12 @@ export class ApiService {
   editAnswer(data: any): Observable<any> {
     console.log("Data sent:", data);
     return this.http.put(`${this.apiUrl}/edit-answer`, data);  //edit question api
-
   }
+
+  getDashboard(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/test`); //get all categories api
+  }
+
 
 
 }

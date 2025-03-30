@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
  constructor(private apiService:ApiService){}
 
-  public chart: any;
+  public chart:any;
   categoryCount=[];
   category = [];
   totalCount = [];
@@ -22,8 +22,9 @@ export class DashboardComponent implements OnInit {
     this.createChart();
     this.apiService.getDashboard().subscribe(response=>{     
     this.categoryCount = response;
+    console.log("categoryCount",this.categoryCount);
     for(let item of this.categoryCount){
-      this.category.push(item.content);
+      this.category.push(item.category_name);
       this.totalCount.push(item.total);
 
     }
@@ -38,7 +39,6 @@ export class DashboardComponent implements OnInit {
   }
 
   createChart() {
-
    if(this.chart){
     this.chart.destroy();
    }

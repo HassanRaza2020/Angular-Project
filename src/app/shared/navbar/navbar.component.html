@@ -32,16 +32,15 @@
           <li class="nav-item"> 
             <a  class="nav-link" style="font-family: cursive;" >{{this.username}}</a>
           </li>
-          
-          
-          
-          
-          
+
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard" style="font-family: cursive;" *ngIf="authService.isLoggedIn()">Dashboard</a>
+          </li>
+
+                           
           <li class="nav-item" *ngIf="authService.isLoggedIn()"> 
             <a class="nav-link" (click)="authService.logout()" class="nav-link" style="font-family: cursive;" href="#" >Logout</a>
           </li>
-          
-      
 
 
         </ul>
