@@ -22,17 +22,11 @@ export class DashboardComponent implements OnInit {
     this.createChart();
     this.apiService.getDashboard().subscribe(response=>{     
     this.categoryCount = response;
-    console.log("categoryCount",this.categoryCount);
     for(let item of this.categoryCount){
-      this.category.push(item.category_name);
-      this.totalCount.push(item.total);
-
+      this.category.push(item.category_name); //push the category names in array
+      this.totalCount.push(item.total);      //push the frequency of categories in array 
     }
-    this.createChart();
-
-   console.log("category:", this.category);
-   console.log("Total:", this.totalCount);
-
+    this.createChart(); //intializing the function
     
   })
 
@@ -40,13 +34,13 @@ export class DashboardComponent implements OnInit {
 
   createChart() {
    if(this.chart){
-    this.chart.destroy();
+    this.chart.destroy(); //destroy the previous chart if exists  
    }
 
     this.chart = new Chart("MyChart", {
       type: 'bar',
       data: {
-        labels: this.category,
+        labels: this.category, 
         datasets: [
           {
             label: 'Category',
