@@ -14,7 +14,7 @@ import {
 export class SnackbarComponent {
   constructor(
     public sbRef: MatSnackBarRef<SnackbarComponent>,
-    @Inject(MAT_SNACK_BAR_DATA) public data: any
+    @Inject(MAT_SNACK_BAR_DATA) public data: any  //injecting data from snackbar
   ) {}
   ngOnInit() {}
 
