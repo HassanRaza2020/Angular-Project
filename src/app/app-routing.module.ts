@@ -17,7 +17,7 @@ import { DashboardComponent } from './auth/dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent  }, 
-  { path: 'signup', component: SignupComponent }, 
+  {path: 'signup', component: SignupComponent }, 
   {path: 'login', component:LoginComponent},
   {path: 'latest-question', component:LatestquestionComponent},
   {path:'verification', component:VerificationComponent, },
@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'view-answer', component:PostAnswersComponent,canActivate:[AuthGuard]},
   {path:'answers', component:AnswersComponent,canActivate:[AuthGuard]},
   {path:'dashboard', component:DashboardComponent,canActivate:[AuthGuard]},
-  { path: '**', redirectTo: '', pathMatch:'full' }  
+  {path: '**', redirectTo: '', pathMatch:'full' }  
 ];
 
 @NgModule({
