@@ -20,17 +20,17 @@ export class AnswersComponent {
 
   ngOnInit(): void {
 
-   this.userId = localStorage.getItem('user_id'); 
+   this.userId = localStorage.getItem('user_id'); //storing user id in local storage
     
-    this.sharedService.sharedQuestionDetails$.subscribe(response => {
+    this.sharedService.sharedQuestionDetails$.subscribe(response => {  
       console.log("Received:", response);
-      this.details = response;
+      this.details = response;        
       console.log("Question ID:",this.details.question_id);
     })
 
     this.apiService.getAnswers(localStorage.getItem('question_id')).subscribe(
       (response) => {
-        this.answers = response;
+        this.answers = response;                   //function to get answers
         console.log("Answers:", this.answers);
       },
       (error) => {
@@ -41,7 +41,7 @@ export class AnswersComponent {
   }
 
 
-  deleteAnswer(answerKey: number) {
+  deleteAnswer(answerKey: number) {                                //function to delete answer    
       this.apiService.deleteAnswer(answerKey).subscribe(data => {
         console.log("Deleted successfully:", data, answerKey);
         this.snackBar.openFromComponent(SnackbarComponent, {
@@ -58,7 +58,7 @@ export class AnswersComponent {
     }
 
     openModal() {
-        this.dialog.open(EditAnswerComponent, {
+        this.dialog.open(EditAnswerComponent, {   //function to open modal
           width: '450px',
           height: '500px',
           data: { message: 'Hello form parent component!' }
